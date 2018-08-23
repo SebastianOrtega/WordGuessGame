@@ -42,3 +42,13 @@
     color: black;
     border-color: black;
 }
+
+.finish {
+    z-index: 1000;
+    font-size: 100px;
+    position: absolute;
+    margin-top: 145px;
+    padding: 30px;
+    font-weight: bold;
+    color: green;
+}

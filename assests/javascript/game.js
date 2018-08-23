@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    console.log("ready!");
+    // console.log("ready!");
     var breeds = ["akita", "husky", "alaskan", "pit bull", "terrier", "pug", "bull dog", "chihuahua", "dalmata", "retriever", "dachshund"];
     var usedLetters = [];
     var badCounter = 90;
@@ -16,10 +16,9 @@ $(document).ready(function() {
 
     function badLetter(badletter) {
 
-        console.log("Letra mala: " + badletter);
+        // console.log("Letra mala: " + badletter);
         var letter = $("<div>");
         $(letter).addClass("usedletter");
-        //$(letter).attr("data-letter", palabra[i]);
         $(letter).text(badletter);
         $(".usedletters").append(letter);
 
@@ -30,11 +29,11 @@ $(document).ready(function() {
     var palabra;
 
     palabra = randomWord()
-    console.log(palabra);
-    console.log(palabra.length);
+        // console.log("Palabra: " + palabra);
+        // console.log("Tamaño de palabra: " + palabra.length);
 
     for (var i = 0; i < palabra.length; i++) {
-        console.log("Letra: " + palabra[i]);
+        // console.log("Letra: " + palabra[i]);
         var letter = $("<div>");
         $(letter).addClass("usedletter no-word letter-" + palabra[i]);
         $(letter).text(palabra[i]);
@@ -44,7 +43,7 @@ $(document).ready(function() {
 
     // Reload button (Play Again)
     $(".btn").on("click", function() {
-        console.log("Reload");
+        // console.log("Reload");
         location.reload();
     });
 
@@ -52,28 +51,45 @@ $(document).ready(function() {
 
     document.onkeyup = function(event) {
         var keyDown = event.key;
-        console.log(keyDown);
-        if (!keyboardDisabled) {
+        // console.log("Letra presionada: " + keyDown);
+
+        // console.log("Esta en array: " + usedLetters.indexOf(keyDown));
+        if (!keyboardDisabled && usedLetters.indexOf(keyDown) === -1) {
+
+            usedLetters.push(keyDown);
+            // console.log("Array usedLetters: " + usedLetters);
 
             if (palabra.indexOf(keyDown) !== -1) {
 
                 $(".letter-" + keyDown).addClass("good");
-                console.log(keyDown + "  Es buena");
+                // console.log(keyDown + "  Es buena");
                 var repetition = 0;
                 for (var n = 0; n < palabra.length; n++) {
                     if (keyDown === palabra[n])
                         repetition++;
                 }
-                console.log("Letras repetidas: " + repetition)
+
+                // console.log("Letras repetidas: " + repetition)
+                goodCount += repetition;
+                // console.log("Buenas: " + goodCount);
+                if (goodCount == palabra.length) {
+                    // console.log("You WON");
+                    $(".finish").text("WON")
+                    keyboardDisabled = true;
+                }
+
 
 
             } else {
-                console.log(keyDown + "  Es mala");
+                // console.log(keyDown + "  Es mala");
                 var numeroImagen = ++badCounter;
-                if (badCounter === 100)
+                if (badCounter === 100) {
                     keyboardDisabled = true;
+                    $(".finish").text("LOOSE")
+
+                }
                 var stringImagen = "assests/images/" + numeroImagen + ".jpg";
-                console.log("Numeor de imagen: " + stringImagen);
+                // console.log("Numero de imagen: " + stringImagen);
 
 
                 $("#imagen").attr("src", stringImagen);
