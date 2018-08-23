@@ -32,3 +32,13 @@
     margin: 2px;
     text-align: center;
 }
+
+.no-word {
+    color: white;
+    border-color: black;
+}
+
+.good {
+    color: black;
+    border-color: black;
+}
