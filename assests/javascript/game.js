@@ -86,6 +86,9 @@ $(document).ready(function() {
                 if (badCounter === 100) {
                     keyboardDisabled = true;
                     $(".finish").text("LOOSE")
+                    for (var n = 0; n < palabra.length; n++) {
+                        $(".letter-" + palabra[n]).addClass("good");
+                    }
 
                 }
                 var stringImagen = "assests/images/" + numeroImagen + ".jpg";
