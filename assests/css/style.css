@@ -1,0 +1,34 @@
+.wrapper {
+    width: 100%;
+}
+
+.title {
+    margin-top: 50px;
+    color: blue;
+    margin: auto;
+    text-align: center;
+    font-size: 5ch;
+}
+
+.cardContainer {
+    margin-top: 50px;
+}
+
+.letter {
+    display: inline;
+    /* width: 30px;
+    height: 30px; */
+    border-bottom-style: solid;
+    /* float: left; */
+    margin: 2px;
+    text-align: center;
+}
+
+.usedletter {
+    width: 30px;
+    height: 30px;
+    border-style: solid;
+    float: left;
+    margin: 2px;
+    text-align: center;
+}
